@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,30 @@
     <script>
 
 
-        $(document).ready(function(){
+        $(document).ready(function () {
 
-            $("button").click(function(){
+            /*Sayfa açıldığında api ile iletişim kurup dropdown doldurma*/
 
 
+            $.ajax({
 
+                url: "https://rickandmortyapi.com/api/character/",
+                type: "get",
+                success: function (response) {
+
+                  $.each(response.results,function(index,value){
+
+                    $("select").append("<option>"+value.name+"</option>");
+
+                  });
+                },
+                error: function (error) {
+                    alert("hata alındı");
+                }
+            });
+
+
+            $("button").click(function () {
 
                 var value = $("#input").val();
 
@@ -21,14 +40,24 @@
 
                 $.ajax({
 
-                    url:"https://rickandmortyapi.com/api/character/"+value,
-                    type:"get",
-                    success:function(response){
+                    url: "https://rickandmortyapi.com/api/character/" + value,
+                    type: "get",
+                    success: function (response) {
 
-                        debugger;
+                        $("#ad").html(response.name);
+                        $("#cinsiyet").html(response.gender);
+                        $("#orjin").html(response.origin.name);
+                        $("#status").html(response.status);
+                        $("#locasyon").html(response.location.name);
+
+
+                        $("img").attr("src", response.image);
+
+
+
                     },
-                    error:function(error){
-                        debugger;
+                    error: function (error) {
+
                     }
                 });
             })
@@ -38,46 +67,61 @@
 
     </script>
     <style>
-        div{
+        div {
 
             width: 250px;
             height: 300px;
             border: 2px solid gray;
         }
-        table{
+        select{
+            display: block;
+        }
 
-            padding-top: 160px;
+        td {
+            width: 50%;
+        }
+
+        table {
+            border: 2px solid gray;
+        }
+
+        img {
+            width: 100%;
+            height: 150px;
         }
     </style>
 </head>
+
 <body>
+    <select></select>
     <input id="input" type="text">
     <button>Karakter Getir</button>
 
     <div>
         <img>
         <table>
-        <tr>
-            <td>Ad Soyad</td>
-            <td id="ad"></td>
-        </tr>
-        <tr>
-            <td>Cinsiyet</td>
-            <td id="cinsiyet"></td>
-        </tr>
-        <tr>
-            <td>Statü</td>
-            <td id="status"></td>
-        </tr>
-        <tr>
-            <td>Orjin</td>
-            <td id="orjin"></td>
-        </tr>
-        <tr>
-            <td>Lokasyon</td>
-            <td id="lokasyon"></td>
-        </tr>
+            <tr>
+                <td>Ad Soyad : </td>
+                <td id="ad"></td>
+            </tr>
+            <tr>
+                <td>Cinsiyet</td>
+                <td id="cinsiyet"></td>
+            </tr>
+            <tr>
+                <td>Statü</td>
+                <td id="status"></td>
+            </tr>
+            <tr>
+                <td>Orjin</td>
+                <td id="orjin"></td>
+            </tr>
+            <tr>
+                <td>Lokasyon</td>
+                <td id="lokasyon"></td>
+            </tr>
         </table>
     </div>
 </body>
+
 </html>

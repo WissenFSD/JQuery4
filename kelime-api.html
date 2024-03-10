@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("button").click(function () {
+
+                var value = $("#input").val();
+                $.ajax({
+
+                    
+                    url: "https://api.collectapi.com/dictionary/wordSearchTurkish?query="+value,
+                    type: "get",
+                    headers:{
+                        "Authorization":"apikey 5a28lvUVTKfp6MAYicuCII:2P4uFhNpiLhWR1cyuxy6yY"
+                    },
+                    contentType:"application/json",
+                    success: function (response) {
+
+                        
+                        $("h3").text(response.result[0].madde.kelime[0].anlam);
+                    },
+                    error: function (error) {
+                        alert("hata alındı");
+                    }
+                });
+
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <input id="input" type="text"> </input>
+    <button>Kelime açıklamasını getir</button>
+    <h3></h3>
+</body>
+
+</html>
