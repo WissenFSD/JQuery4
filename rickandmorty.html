@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+
+
+        $(document).ready(function(){
+
+            $("button").click(function(){
+
+
+
+
+                var value = $("#input").val();
+
+                /*Webapi ile iletişime geçecek servis tanımalaması*/
+
+                $.ajax({
+
+                    url:"https://rickandmortyapi.com/api/character/"+value,
+                    type:"get",
+                    success:function(response){
+
+                        debugger;
+                    },
+                    error:function(error){
+                        debugger;
+                    }
+                });
+            })
+
+
+        });
+
+    </script>
+    <style>
+        div{
+
+            width: 250px;
+            height: 300px;
+            border: 2px solid gray;
+        }
+        table{
+
+            padding-top: 160px;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" type="text">
+    <button>Karakter Getir</button>
+
+    <div>
+        <img>
+        <table>
+        <tr>
+            <td>Ad Soyad</td>
+            <td id="ad"></td>
+        </tr>
+        <tr>
+            <td>Cinsiyet</td>
+            <td id="cinsiyet"></td>
+        </tr>
+        <tr>
+            <td>Statü</td>
+            <td id="status"></td>
+        </tr>
+        <tr>
+            <td>Orjin</td>
+            <td id="orjin"></td>
+        </tr>
+        <tr>
+            <td>Lokasyon</td>
+            <td id="lokasyon"></td>
+        </tr>
+        </table>
+    </div>
+</body>
+</html>

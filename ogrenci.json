@@ -1,0 +1,13 @@
+{
+
+    "Ad":"Ali",
+    "Soyad":"Ayaz",
+    "Yas":19,
+    "Okul":"Maltepe Fen",
+    "Arkadaşlar":{
+
+        "ad":"ahmet",
+        "ad":"mehmet"
+    }
+    
+}

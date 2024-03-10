@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+           /*her elemannın bir index numarası vardır. Aynı tipte elementleri index numaralarına göre yakalayabiliriz. 
+           
+            Index numaraları + ve - olabilir örnek 100 elemanlı bir p dizisinde 99. p'yi yakalamk için +99 yada -2 olarak yakalabiliriz.*/
+
+            /*Eq içerisinde index numarası alır ve o index numarasındaki elemanı getirir*/
+        $(document).ready(function () {
+
+            $("#first").click(function () {
+
+                $("p").eq(1).css("background-color","red");
+
+            })
+            $("#second").click(function () {
+
+                $("p").eq(-2).css("background-color","yellow");
+            })
+
+        })
+
+    </script>
+</head>
+
+<body>
+ 
+    <button id="first">eq(1)</button>
+    <button id="second">eq(-2)</button>
+    <p>index 0 : index -4</p>
+    <p>index 1 : index -3</p>
+    <p>index 2 : index -2</p>
+    <p>index 3 : index -1</p>
+</body>
+
+</html>
